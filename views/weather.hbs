@@ -13,7 +13,7 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Corinthia:wght@700&family=Lobster&family=Merriweather&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,7 +127,7 @@ form{
 .output{
     height: 40vh;
     width: 35vw;
-    background-color: rgb(26, 26, 58);
+    background-color: rgb(23, 23, 58);
     margin-top: 5rem;
     border-radius: 1rem;
 }
@@ -136,7 +136,7 @@ form{
     height: 20%;
     background-color: rgb(21, 21, 44);
     margin-top: 1rem;
-    color: white;
+    color: rgba(255, 255, 255, 0.685);
     padding: 1rem;
     font-size: 1.7vw;
 }
@@ -178,6 +178,29 @@ form{
     font-size: 2vmax;
     font-weight: bold;
 }
+.dynamic{
+    display: flex;
+    justify-content: space-evenly;
+}
+.dynamic h1{
+    color: white;
+    font-size: 5.5vmax;
+    font-family: 'Alfa Slab One', cursive;
+}
+.fas{
+    align-self: center;
+    font-size: 4vmax;
+    animation-name: enlarge;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.newhtml h3{
+    color: rgba(255, 255, 255, 0.753);
+    font-size: 3vmax;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+}
 footer{
     position: absolute;
     width: 100%;
@@ -188,7 +211,14 @@ footer{
     text-align: center;
     bottom: 0px;
 }
-
+@keyframes enlarge{
+    from{
+        font-size: 5rem;
+    }
+    to{
+        font-size: 6rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -205,7 +235,7 @@ footer{
     <form>
         <div>
             <input type="text" placeholder="Enter your city name.." class="city">
-            <button class="search" onclick="myFunc()">Search</button>
+            <button class="search">Search</button>
             </input>  
         </div> 
         <div class="output">
@@ -239,12 +269,41 @@ footer{
         if(e<10)
             e=`0${e}`;
         let y=`${a} | ${b} ${c} | ${d}:${e} ${am}`;
-        console.log(y);
         document.querySelector(".date").innerHTML=y})();
-        const myFunc = (e) => {
+        const myFunc = async(e) => {
             e.preventDefault();
-            console.log(document.querySelector('.city').value);
+            let city=document.querySelector('.city').value;
+            if(city==='')
+                document.querySelector('.result').innerHTML="<p>Please enter your city name</p>";
+            else
+            {
+                try{
+                    let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=1fe8a8103a97cc521c14391c23d57422`;
+                    const response=await fetch(url);
+                    const data=await response.json();
+                    let x=data.weather[0].main;
+                    let temp=(Math.round(data.main.temp))/10;
+                    console.log(x);
+                    if(x=='Sunny')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class='fas fa-sun' style='color: yellow'></i></div></div>`;
+                    else if(x=='Clouds')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-cloud" style='color: lightblue;'></i></div></div>`;
+                    else if(x=='Haze')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-smog" style='color: grey;'></i></div></div>`;
+                    else if(x=='Rain')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-cloud-rain" style='color: blue;'></i></div></div>`;
+                    else if(x=='Clear')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="far fa-moon" style='color: grey'></i></div></div>`;
+                    console.log(data);
+                }
+                catch{
+                    console.log('he');
+                }
+                
+        
+            }
         }
+        document.querySelector('.search').addEventListener('click',myFunc);
     </script>
 </body>
 </html>
