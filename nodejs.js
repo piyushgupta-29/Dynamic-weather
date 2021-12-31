@@ -5,6 +5,7 @@ const hbs=require('hbs');
 const mongoose=require('mongoose');
 app.use(express.static(path.join(__dirname,'/views')));
 
+const port = process.env.PORT || 8000;
 app.set('view engine','hbs');
 hbs.registerPartials(path.join(__dirname,'/partials'));
 
@@ -73,7 +74,7 @@ app.get('*',(req,res)=>{
     res.render('404');
 })
 
-app.listen(8000,(err)=>{
+app.listen(port,(err)=>{
     if(err)
         console.log('error');
     else 
