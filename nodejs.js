@@ -35,10 +35,6 @@ const schema = new mongoose.Schema({
         type:String,
         required:true
     },
-    confirmPassword:{
-        type:String,
-        required:true
-    },
 });
 
 const User = new mongoose.model("User",schema);
@@ -50,13 +46,14 @@ app.get('/login',async(req,res)=>{
 })
 app.post('/login',async(req,res)=>{
     try{
-        let firstName=req.body.firstName;
-        let lastName=req.body.lastName;
-        let emailId=req.body.emailId;
-        let gender=req.body.gender;
-        let password=req.body.password;
-        let user1={firstName,lastName,emailId,gender,password};
-        const result=await User.insertMany([user1]);
+        let user1=new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            emailId: req.body.emailId,
+            gender: req.body.gender,
+            password: req.body.password
+        });
+        const result=await user1.save();
         res.status(201).render('index');
     }
     catch{
