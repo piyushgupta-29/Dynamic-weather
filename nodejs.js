@@ -10,6 +10,7 @@ app.set('view engine','hbs');
 hbs.registerPartials(path.join(__dirname,'/partials'));
 
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 mongoose.connect("mongodb://localhost:27017/weather").then(()=>console.log('successful'))
 .catch((err)=>console.log('error'));
 
@@ -54,11 +55,9 @@ app.post('/login',async(req,res)=>{
         let emailId=req.body.emailId;
         let gender=req.body.gender;
         let password=req.body.password;
-        let confirmPassword=req.body.confirmPassword;
-        console.log(req.body.firstName);
-        let user1={firstName,lastName,emailId,gender,password,confirmPassword};
+        let user1={firstName,lastName,emailId,gender,password};
         const result=await User.insertMany([user1]);
-        console.log(result);
+        res.status(201).render('index');
     }
     catch{
         (e)=>console.log(e)
