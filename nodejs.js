@@ -11,7 +11,11 @@ hbs.registerPartials(path.join(__dirname,'/partials'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-mongoose.connect("mongodb://localhost:27017/weather").then(()=>console.log('successful'))
+mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:27017/weather",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(()=>console.log('successful'))
 .catch((err)=>console.log('error'));
 
 const schema = new mongoose.Schema({
@@ -76,3 +80,4 @@ app.listen(port,(err)=>{
     else 
         console.log('listning');
 })
+// https://arcane-beach-86111.herokuapp.com/ | https://git.heroku.com/arcane-beach-86111.git
