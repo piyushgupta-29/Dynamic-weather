@@ -81,3 +81,4 @@ app.listen(port,(err)=>{
         console.log('listning');
 })
 // https://arcane-beach-86111.herokuapp.com/ | https://git.heroku.com/arcane-beach-86111.git
+// git config --global user.email "you@example.com" git config --global user.name "Your Name"
