@@ -1,234 +1,242 @@
-<style>
-        *{
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-        body{
-            font-size: 62.5%;
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-        /* navbar */
-        .navbar{
-            width: 100%;
-            background-color: rgb(23, 23, 58);
-            display: flex;
-            justify-content: end;
-            color: white;
-            list-style-type: none;
-            padding: 1rem;
-        }
-        .navbar li{
-            padding: 1rem;
-            font-size: 2vw;
-        }
-        .navbar li:last-child{
-            margin-right: 4rem;
-        }
-        .navbar li:first-child{
-            margin-left: 4rem;
-        }
-        .sign-up{
-            margin-left: auto;
-        }
-        .btn-sign-up{
-            width: 2vw;
-            border-radius: 2rem;
-        }
-        a{
-            text-decoration: none;
-            color: white;
-        }
-        .left{
-            font-weight: bold;
-            margin-right: auto;
-        }   
-        @media (max-width: 888px)
-        {
-            li{
-                font-size: 3vw;
-            }
-            li:last-child{
-                margin-right: 1rem;
-            }
-            li:first-child{
-                margin-left: 1rem;
-            }
-        }
-        /* weather page */
-        .main{
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 80vh;
-            margin-bottom: 1rem;
-        }
-        .info{
-            margin-left: 3rem;
-        }
-        .info p{
-            font-size: 1.2rem;
-        }
-        .image{
-            max-width: 100%;
-            height: auto;
-        }
-        .check{
-            margin-top: 2rem;
-            padding: .5rem;
-            font-size: .7rem;
-            border-radius: 20px;
-            color: rgb(78, 70, 70);
-            font-weight: bold;
-            border-color: rgb(78, 70, 70);
-            box-shadow: 2px 3px rgb(0, 183, 255);
-        }
-        .check a{
-            color: rgb(65, 57, 57);
-        }
-        .login{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .weather-form{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5vh;
-        }
-        .city{
-            height: 5vh;
-            width: 50vw;
-            background-color: rgb(26, 26, 58);
-            color: white;
-            padding: 1.4rem;
-            padding-right: 5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 1.3rem;
-        }
-        .search{
-            height: 5vh;
-            width: 5vw;
-            background-color: rgb(28, 127, 167);
-            color: white;
-            font-size: 1vmax;
-            margin-left: -5.2rem;
-            border: none;
-            border-radius: 1rem;
-        }
-        .output{
-            height: 40vh;
-            width: 35vw;
-            background-color: rgb(26, 26, 58);
-            margin-top: 5rem;
-            border-radius: 1rem;
-        }
-        .date{
-            width: 100%;
-            height: 20%;
-            background-color: rgb(21, 21, 44);
-            margin-top: 1rem;
-            color: white;
-            padding: 1rem;
-            font-size: 1.7vw;
-        }
-        .result{
-            width: 100%;
-            height: 75%;
-            padding: 1rem;
-        }
-        .result p{
-            color: rgba(255, 255, 255, 0.356);
-            font-size: 1.7vmax;
-        }
-        @media (max-width:1000px),(max-height:620px)
-        {
-            img{
-                width: 350px;
-                height: 250px;
-            }
-        }
-        @media (max-width:762px)
-        {
-            .main{
-                flex-direction: column;
-            }
-            .info{
-                margin: 0px 2rem;
-            }
-        }
-        /* about */
-        .about h1{
-            font-family: 'Corinthia', cursive;
-            color:rgb(0, 183, 255);
-            font-size: 5vmax;
-            margin-left: 7vmax;
-        }
-        .about h2{
-            font-family: 'Merriweather', serif;
-            margin-left: 17vmax;
-            font-size: 2vmax;
-            font-weight: bold;
-        }
-        /* login page */
-        .form{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5vh;
-            border: 1px solid rgb(78, 73, 73);
-            border-radius: .5rem;
-            padding: 2rem;
-        }
-        /* dynamic animation */
-        .dynamic{
-            display: flex;
-            justify-content: space-evenly;
-        }
-        .dynamic h1{
-            color: white;
-            font-size: 5.5vmax;
-            font-family: 'Alfa Slab One', cursive;
-        }
-        .fas{
-            align-self: center;
-            font-size: 4vmax;
-            animation-name: enlarge;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-        .newhtml h3{
-            color: rgba(255, 255, 255, 0.753);
-            font-size: 3vmax;
-            font-weight: bold;
-            font-family: 'Merriweather', serif;
-        }
-        @keyframes enlarge{
-            from{
-                font-size: 5rem;
-            }
-            to{
-                font-size: 6rem;
-            }
-        }
-        /* footer */
-        footer{
-            position: absolute;
-            width: 100%;
-            padding: 1rem;
-            background-color: rgb(23, 23, 58);
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-            bottom: 0px;
-        }
 
-    </style>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Merriweather:ital@1&family=Piazzolla:wght@200;300;400;900&display=swap');
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Piazzolla",serif;
+    }
+    :root{
+        --main-bg: #1e272e;
+        --main-color: #0097e6;
+    }
+    html{
+        height: 100vh;
+        font-size: 62.5%;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+    .row{
+        margin: 0;
+    }
+    .main_menu{
+        background-color: var(--main-bg);
+    }
+    .navbar{
+        color: white;
+        background-color: var(--main-bg);
+        padding: 2rem 0;
+    }
+    .navbar li{
+        margin-left: 2rem;
+    }
+    .navbar a{
+        color: white;
+        font-size: 1.8rem;
+    }
+    .navbar a:hover{
+        color: var(--main-color);
+    }
+    .navbar-toggler{
+        background-color: white;
+    }
+    .fa-snowflake{
+        transition: all linear;
+        animation: rot 2s linear infinite;
+        oclor: var(--main-color);
+    }
+    @keyframes rot{
+        0%{
+            tranform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    /* main header  */
+    .main_header_left{
+        height: 70rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .main_header_left p{
+        font-size: 2rem;
+    }
+    .main_header_left h1{
+        font-size: 4rem;
+        margin: 1rem 0 4rem 0;
+        text-transform: capitalize;
+    }
+    .main_header_left .text_clr{
+        color: var(--main-color);
+    }
+    .main_header_left button{
+        border: none;
+        padding: 0.8rem 1.8rem;
+        font-size: 1.4rem;
+        border-radius: 2rem;
+        text-transform: uppercase;
+        box-shadow: 0 8px 6px -6px black;
+        outline: none;
+    }
+    .main_header_left button:hover{
+        box-shadow: 0 8px 6px -6px var(--main-color);
+    }
+    .main_header_right{
+        height: 70rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    /* temp input field */
+    .temp_form{
+        width: 60%;
+        position: relative;
+        margin: 10rem auto 6rem;
+    }
+    .temp_form input[type="text"]{
+        width: 100%;
+        padding: 2rem 5rem 2rem 2rem;
+        background: #1e202b;
+        color: white;
+        outline: none;
+        border: none; 
+        font-size: 1.7rem;
+        border-radius: 3rem;
+    }
+    ::placeholder{
+        color: #bfc1c8;
+    }
+    .temp_form input[type="submit"]{
+        position: absolute;
+        top: 5px; 
+        right: 5px;
+        bottom: 5px;
+        border: none;
+        background: #009ad8;
+        padding: 0 3rem;
+        border-radius: 3rem;
+        color: white;
+        font-size: 1.6rem;
+    }
+    .temp_form input[type="submit"]:hover{
+        color: #009ad8;
+        background-color: white;
+    }
+    /* temp details */
+    .tempInformation{
+        width: 50rem;
+        margin: auto;
+        min-height: 20rem;
+        background-color: #323544;
+        border-radius: 1rem;
+        {{!-- padding: 1rem; --}}
+        font-family: "Roboto",sans-serif;
+    }
+    .top_layer{
+        width: 100%;
+        height: 20%;
+        background-color: #2d303d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 1rem;
+    }
+    .top_layer p{
+        color: white;
+        font-weight: 300;
+        font-size: 1.4rem;
+        padding: 2rem;
+    }
+    .main_layer{
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+    .main_layer #city_name{
+        padding: 2rem 0;
+        color: #bfc1c8;
+        font-weight: 300;
+        font-size: 2rem;
+    }
+    .main_layer .middle_layer{
+        display: flex;
+        justify-content: space-around;
+        color: white;
+    }
+    .main_layer .middle_layer p,
+    .main_layer .middle_layer .fa{
+        font-size: 7rem;
+        font-weight: 900;
+    }
+    .fa{
+        color: #009ad8;
+    }
+    sup{
+        font-size: 6rem;
+        margin-top: -2rem;
+    }
+    .data_hide {
+        visibility: hidden;
+        transition: all 0.3s linear;
+    }
+    /* about us page */
+    .about h1{
+        font-family: 'Corinthia', cursive;
+        color:rgb(0, 183, 255);
+        font-size: 8rem;
+        margin-left: 7vmax;
+    }
+    .about h2{
+        font-family: 'Merriweather', serif;
+        margin-left: 17vmax;
+        font-size: 4rem;
+    }
+    /* error page */
+    .errimg img{
+        width: 60rem;
+        height: 30rem;
+    }
+    /* footer */
+    footer{
+        width: 100%;
+        background-color: var(--main-bg);
+        margin-top: auto;
+    }
+    footer p{
+        margin: 0;
+        text-align: center;
+        color: white;
+        font-size: 1.4rem;
+        line-height: 5rem;
+    }
+    /* responsive */
+    @media(max-width: 768px){
+        .main_header_left{
+            height: auto;
+            margin: 5rem 0;
+        }
+        .main_header_right{
+            height: auto;
+            margin: 5rem 0;
+        }
+        .temp_form{
+            width: auto;
+        }
+        .tempInformation{
+            width: auto;
+        }
+        .main_layer .middle_layer p,
+        .main_layer .middle_layer .fa{
+            font-size: 5rem;
+        }
+    }
+</style>

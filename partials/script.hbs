@@ -1,0 +1,66 @@
+<script>
+    (()=>{
+        let x=new Date();
+        let day=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+        let month=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEPT','OCT','NOV','DEC'];
+        let a=day[x.getDay()];
+        let b=x.getDate();
+        let c=month[x.getMonth()];
+        let d=x.getHours();
+        let e=x.getMinutes();
+        let am='AM';
+
+        if(d>12)
+        {
+            d-=12;
+            am='PM';
+        }
+        else 
+            am='AM';
+        if(d<10)
+            d=`0${d}`;
+        if(e<10)
+            e=`0${e}`;
+
+        let y=`${a} | ${b} ${c} | ${d}:${e} ${am}`;
+        document.querySelector(".day").innerHTML=y;
+    }
+    )();
+    
+    const myFunc = async(e) => {
+        e.preventDefault();
+        let city=document.querySelector('#cityName').value;
+        if(city==='')
+        {
+            document.querySelector('#city_name').innerHTML="<p>Please enter your city name</p>";
+            document.querySelector('.middle_layer').classList.add('data_hide');
+        }
+        else
+        {
+            try{
+                let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=1fe8a8103a97cc521c14391c23d57422`;
+                const response=await fetch(url);
+                const data=await response.json();
+                document.querySelector("#city_name").innerText=`${data.name}, ${data.sys.country}`;
+                let x=data.weather[0].main;
+                document.querySelector('temp_real_val').innerHTML=data.main.temp;
+                if(x=='Clear')
+                    document.querySelector('#tempstatus').innerHTML=`<i class='fas fa-sun' style='color: yellow'></i>`;
+                else if(x=='Clouds')
+                    document.querySelector('#tempstatus').innerHTML=`<i class="fas fa-cloud" style='color: lightblue;'></i>`;
+                else if(x=='Haze')
+                    document.querySelector('#tempstatus').innerHTML=`<i class="fas fa-smog" style='color: grey;'></i>`;
+                else if(x=='Rain')
+                    document.querySelector('#tempstatus').innerHTML=`<i class="fas fa-cloud-rain" style='color: blue;'></i>`;
+                else 
+                    document.querySelector('#tempstatus').innerHTML=`<i class='fas fa-sun' style='color: yellow'></i>`;
+                document.querySelector('.middle_layer').classList.remove('data_hide');
+            }
+            catch{
+                document.querySelector('#city_name').innerHTML="<p>Please enter correct city name</p>";
+                document.querySelector('.middle_layer').classList.add('data_hide');
+            }
+        }
+    }
+    document.querySelector('#submitBtn').addEventListener('click',myFunc);
+</script>
