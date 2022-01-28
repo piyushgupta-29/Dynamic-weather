@@ -6,32 +6,19 @@
 </head>
 <body>
     {{>navbar}}
-    <div class="container-fluid main-header">
-        <div class="row">
-            <div class="col-md-10 col-12 mx-auto">
-                <div class="row">
-                    {{!-- left div  --}}
-                    <div class="col-md-6 col-12 main_header_left">
-                        <p>Welcome to weather app</p>
-                        <h1>Get The Latest <span class="text_clr">Weather</span> Info of Your City</h1>
-                        <a href="/weather"><button>Check Now</button></a>
-                    </div>
-                    {{!-- right div  --}}
-                    <div class="col-md-6 col-12 main_header_right">
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <img class=" w-100" src="https://assets.materialup.com/uploads/a0af036b-a724-472a-9940-575e89c722be/preview.gif" alt="First slide">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="main container-fluid">
+        <div class="info">
+            <p>Welcome to weather app</p>
+            <h2>Get The Latest <span style="color: rgb(0, 183, 255);">Weather</span> Info Of Your City</h2>
+            <button class="check"><a href='/weather'>CHECK NOW</a></button>
+        </div>
+        <div class="image">
+            <img src="https://assets.materialup.com/uploads/a0af036b-a724-472a-9940-575e89c722be/preview.gif" alt="" width="550" height="450">
         </div>
     </div>
     <footer>
-        <p>Projects by students of Government College of Engineering, Aurangabad</p>
+        Project by students of Government College of Engineering, Aurangabad 
     </footer>
+    
 </body>
 </html>

@@ -6,26 +6,13 @@
 </head>
 <body>
     {{>navbar}}
-    <div class="container-fluid main-header">
-        <div class="row">
-            <div class="col-md-10 col-12 mx-auto">
-                <div class="row">
-                     {{!-- left div --}}
-                    <div class="col-md-6 col-12 main_header_left align-items-center">
-                        <figure class="errimg">
-                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--_GqDpWw0--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/7aqcppklh6bexoa70320.jpg" alt="" class="img-fluid">
-                        </figure>
-                        <p>Welcome to weather app</p>
-                        <h1>Oops! Page Not Found</h1>
-                        <a href="/"><button>Go Back</button></a>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+    <div class="error">
+        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--_GqDpWw0--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/7aqcppklh6bexoa70320.jpg" alt="">
+        <h1>The Page you are looking for doesn't exist</h1>
+        <button class="check"><a href='/index'>Go Home</a></button>
     </div>
     <footer>
-        <p>Project by students of Government College of Engineering, Aurangabad</p>
+        Project by students of Government College of Engineering, Aurangabad
     </footer>
     
 </body>

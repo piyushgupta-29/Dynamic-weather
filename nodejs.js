@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const path=require('path');
 const hbs=require('hbs');
+const favicon=require('serve-favicon');
 const mongoose=require('mongoose');
 app.use(express.static(path.join(__dirname,'/views')));
 
@@ -11,6 +12,7 @@ hbs.registerPartials(path.join(__dirname,'/partials'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(favicon(path.join(__dirname,'/images/weather_icon.png')));
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost:27017/weather",{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -68,6 +70,7 @@ app.get('/weather',(req,res)=>{
     res.render('weather');
 })   
 app.get('/about',(req,res)=>{
+    
     res.render('about');
 })
 app.get('*',(req,res)=>{
