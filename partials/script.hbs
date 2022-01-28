@@ -39,9 +39,11 @@
                     else if(x=='Clouds')
                         document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-cloud" style='color: lightblue;'></i></div></div>`;
                     else if(x=='Haze')
-                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-smog" style='color: grey;'></i></div></div>`;
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-smog" style='color: #A0A0A0;'></i></div></div>`;
                     else if(x=='Rain')
                         document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-cloud-rain" style='color: blue;'></i></div></div>`;
+                    else if(x=='Smoke')
+                        document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class="fas fa-smog" style='color: #A0A0A0;'></i></div></div>`;
                     else 
                         document.querySelector('.result').innerHTML=`<div class='newhtml'><h3><em>${x}</em></h3><div class='dynamic'><h1>${temp}&deg;C</h1><i class='fas fa-sun' style='color: yellow'></i></div></div>`;
                 }
